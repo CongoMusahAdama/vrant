@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 24" role="img" aria-label="UnionPay">
+  <rect width="38" height="24" rx="2" fill="#fff"/>
+  <path fill="#E21836" d="M0 0h14v24H0z"/>
+  <path fill="#00447C" d="M14 0h12v24H14z"/>
+  <path fill="#007B84" d="M26 0h12v24H26z"/>
+  <text x="7" y="14" font-family="Arial,sans-serif" font-size="4" font-weight="bold" fill="#fff">UnionPay</text>
+</svg>

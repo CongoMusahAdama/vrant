@@ -1,0 +1,377 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* VRANT Design System - Ghanaian Heritage, Modern Form */
+
+@layer base {
+  :root {
+    /* Brand Colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    
+    /* Cards & Surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    /* Primary Brand (Black) */
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary (Army Green) */
+    --secondary: 75 19% 20%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted tones */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    /* Accent (Army Green lighter) */
+    --accent: 75 19% 25%;
+    --accent-foreground: 0 0% 100%;
+
+    /* System colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 0%;
+
+    /* Brand specific tokens */
+    --brand-army-green: 346 98% 25%; /* VRANT wine #7F011F */
+    --brand-army-green-light: 346 80% 33%;
+    --brand-army-green-dark: 346 98% 25%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 0%) 0%, hsl(75 19% 15%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 2px 8px hsl(0 0% 0% / 0.1);
+    --shadow-medium: 0 4px 12px hsl(0 0% 0% / 0.15);
+    --shadow-strong: 0 8px 24px hsl(0 0% 0% / 0.2);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 10.5rem;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  @media (min-width: 640px) {
+    html {
+      scroll-padding-top: 12rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .reveal-fade-up,
+    .reveal-fade,
+    .reveal-scale,
+    .reveal-product {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    html {
+      scroll-padding-top: 14.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-top: 16rem;
+    }
+  }
+
+  body,
+  input,
+  textarea,
+  button,
+  select {
+    @apply bg-background text-foreground font-brand text-sm font-bold;
+    font-style: normal;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-brand font-bold uppercase tracking-[0.08em] text-foreground;
+    font-style: normal;
+  }
+
+  h1 { @apply text-2xl md:text-4xl lg:text-5xl mb-4; }
+  h2 { @apply text-xl md:text-3xl lg:text-4xl mb-3; }
+  h3 { @apply text-lg md:text-2xl mb-2; }
+
+  p {
+    @apply text-sm leading-[1.7] text-foreground/80 font-brand font-bold;
+  }
+
+
+  .glass {
+    @apply bg-background border-b border-black/10;
+  }
+
+  .text-luxury {
+    @apply font-brand font-bold uppercase tracking-[0.12em];
+  }
+
+  .label-caps {
+    @apply text-[10px] font-bold tracking-[0.4em] uppercase text-foreground/40;
+  }
+
+  .heading-display {
+    @apply font-brand font-bold uppercase tracking-[0.06em] leading-[1.2];
+  }
+
+  .btn-premium {
+    @apply bg-primary text-primary-foreground px-8 py-3 uppercase tracking-[0.2em] text-[10px] font-bold transition-colors duration-300 hover:bg-army-green active:opacity-90;
+  }
+}
+
+/* Typing Animation */
+@keyframes typing {
+  0%, 90%, 100% {
+    width: 0;
+  }
+  30%, 60% {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    border-color: transparent;
+  }
+  51%, 100% {
+    border-color: currentColor;
+  }
+}
+
+.animate-typing {
+  overflow: hidden;
+  border-right: 2px solid;
+  white-space: nowrap;
+  animation: typing 4s infinite, blink 1s infinite;
+  display: inline-block;
+}
+
+/* Fade In Out Animation for BOLDLY text */
+@keyframes fadeInOut {
+  0%, 100% { 
+    opacity: 0.7; 
+  }
+  50% { 
+    opacity: 1; 
+  }
+}
+
+.animate-fade-in-out {
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Custom Luxury Animations */
+@keyframes pulse-slow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 20s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Scroll reveal — live feel on scroll */
+.reveal-fade-up,
+.reveal-fade,
+.reveal-scale,
+.reveal-product {
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal-fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.reveal-fade {
+  opacity: 0;
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.94);
+}
+
+.reveal-product {
+  opacity: 0;
+  transform: translateY(32px) scale(0.96);
+}
+
+.reveal-visible.reveal-fade-up,
+.reveal-visible.reveal-fade,
+.reveal-visible.reveal-scale,
+.reveal-visible.reveal-product {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Hero image subtle motion */
+@keyframes heroKenBurns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.02);
+  }
+}
+
+.hero-image-live {
+  animation: heroKenBurns 18s ease-in-out infinite alternate;
+}
+
+/* Product detail image swap */
+@keyframes productImageIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-product-image-in {
+  animation: productImageIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mobile-friendly tap targets */
+@media (max-width: 767px) {
+  .btn-premium {
+    @apply w-full sm:w-auto min-h-[48px] flex items-center justify-center;
+  }
+}
+
+.safe-area-pb {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
+}

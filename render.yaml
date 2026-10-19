@@ -1,0 +1,63 @@
+# VRANT — backend API on Render (the website is hosted on Vercel).
+# After the first deploy:
+#   • Vercel: set VITE_API_URL to this service's URL (e.g. https://vrant-api.onrender.com)
+#   • Here:   set FRONTEND_URL to the Vercel URL (e.g. https://vrant.vercel.app)
+#   • Paystack dashboard webhook: https://<this-service>/api/payments/webhook
+
+services:
+  - type: web
+    name: vrant-api
+    runtime: node
+    rootDir: backend
+    plan: starter # free plan sleeps after inactivity, which can make Paystack webhooks time out
+    buildCommand: npm ci --omit=dev
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "22"
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRE
+        value: 7d
+      # The Vercel site URL — used for CORS, payment redirects and reset links
+      - key: FRONTEND_URL
+        sync: false
+      # Optional extra allowed origins, comma-separated (e.g. a custom domain + https://www.vrant.com)
+      - key: CORS_ORIGINS
+        sync: false
+      # Customer-facing domain for email/SMS links, if different from FRONTEND_URL
+      - key: PUBLIC_SITE_URL
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: PAYSTACK_PUBLIC_KEY
+        sync: false
+      - key: PAYSTACK_SECRET_KEY
+        sync: false
+      - key: BREVO_API_KEY
+        sync: false
+      - key: BREVO_SENDER_EMAIL
+        sync: false
+      - key: BREVO_SENDER_NAME
+        value: VRANT
+      - key: MNOTIFY_API_KEY
+        sync: false
+      - key: MNOTIFY_SENDER_ID
+        value: VRANT
+      - key: ADMIN_NOTIFY_EMAIL
+        sync: false
+      - key: ADMIN_NOTIFY_PHONE
+        sync: false

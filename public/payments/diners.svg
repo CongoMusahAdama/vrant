@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 24" role="img" aria-label="Diners Club">
+  <rect width="38" height="24" rx="2" fill="#fff" stroke="#E5E5E5"/>
+  <circle cx="16" cy="12" r="6" fill="#0079BE"/>
+  <circle cx="22" cy="12" r="6" fill="#fff" stroke="#0079BE" stroke-width="1"/>
+</svg>
