@@ -37,3 +37,9 @@ backend/.env
 # Local product uploads (use Cloudinary in production)
 backend/uploads/*
 !backend/uploads/.gitkeep
+
+# Vercel local project link
+.vercel
+
+.vercel
+.env*

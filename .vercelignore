@@ -1,0 +1,3 @@
+# The API lives on Render — Vercel only builds the website
+backend
+render.yaml
