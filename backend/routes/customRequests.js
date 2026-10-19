@@ -91,7 +91,11 @@ router.post('/', submitLimiter, optionalAuth, withUpload, [
     });
   } catch (err) {
     console.error('Custom request create error:', err);
-    res.status(500).json({ success: false, message: err.message?.startsWith('Image upload failed') ? err.message : 'Could not send your design. Please try again.' });
+    // Customers never see storage/config details — the real error is in the log above
+    const message = err.message?.startsWith('Image upload failed')
+      ? 'We could not upload your images just now. Please try again, or send the design without images and share them with us on WhatsApp.'
+      : 'Could not send your design. Please try again.';
+    res.status(500).json({ success: false, message });
   }
 });
 
