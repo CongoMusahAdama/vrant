@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 
 const DEFAULT_ABOUT_PARAGRAPHS = [
-  'VRANT is a Ghanaian fashion house where local style meets the modern wardrobe.',
-  'We take the cloth, colour and craft we grew up with — kente, batakari, adinkra and wax print — and cut them into clean, contemporary clothing, denim and hand-finished footwear made for everyday wear.',
-  'Every piece honours where it comes from, and is made for wherever you are going.',
+  'VRANT is a fashion house from Takoradi, Ghana — made for people who wear their heritage with confidence.',
+  'We design clothing, denim and footwear that carry Ghanaian craft into the modern wardrobe: hand-pintucked diamond sets, kaftans with bold hand-cut print bibs, wax-print panel shirts and hand-finished suede slides with the VRANT script.',
+  'Every piece is cut and finished by our own tailors, in small runs, with the kind of detail you feel the moment you put it on.',
+  'Have a design of your own? Bring us your sketch or idea and we will make it just for you.',
+  'VRANT — rooted in Ghana, cut for now.',
 ];
 
 const DEFAULT_STORE_EMAIL = 'hello@vrant.com';

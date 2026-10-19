@@ -2,6 +2,7 @@ import { lazy, Suspense, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import RouteScrollToTop from './components/ui/RouteScrollToTop';
 import CartNavBridge from './components/shop/CartNavBridge';
+import NewDropsModal from './components/shop/NewDropsModal';
 import { Toaster } from './components/ui/sonner';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { CartProvider } from './contexts/CartContext';
@@ -120,6 +121,7 @@ const AppContent = () => (
         <ShopCatalogProvider>
           <PaystackProvider>
             <CartNavBridge />
+            <NewDropsModal />
             <Toaster />
             <div className="min-h-screen flex flex-col">
               <main className="flex-grow">

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Header from '@/components/navigation/Header';
 import Footer from '@/components/layout/Footer';
 import ScrollToTop from '@/components/ui/scroll-to-top';
@@ -32,6 +33,20 @@ const About = () => {
                 {aboutParagraphs.map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
                 ))}
+              </div>
+              <div className="mt-12 flex flex-wrap justify-center gap-3">
+                <Link
+                  to="/products"
+                  className="inline-flex items-center h-12 px-7 border border-black text-[10px] font-bold tracking-[0.2em] uppercase text-black hover:bg-black hover:text-white transition-colors"
+                >
+                  Shop the collection
+                </Link>
+                <Link
+                  to="/custom-design"
+                  className="inline-flex items-center h-12 px-7 bg-army-green text-white text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-army-green-light transition-colors"
+                >
+                  Bring your own design
+                </Link>
               </div>
             </ScrollReveal>
           )}
