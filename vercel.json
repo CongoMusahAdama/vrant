@@ -20,7 +20,7 @@
       ]
     },
     {
-      "source": "/(products|lookbook|brand)/(.*)",
+      "source": "/(products|lookbook|brand)/(.*\\.(?:jpg|jpeg|png|webp|svg))",
       "headers": [
         {
           "key": "Cache-Control",
