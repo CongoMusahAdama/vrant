@@ -5,7 +5,11 @@ import { useSiteSettings } from '@/contexts/SiteSettingsContext';
 /** Short pause so the entrance plays once the page has painted */
 const BASE_DELAY_MS = 150;
 
-/** One photo: fades in from a slight zoom, then drifts with a slow Ken Burns zoom */
+/**
+ * One photo: fades in from a slight zoom and settles at exactly 1:1 scale.
+ * No continuous zoom afterwards — permanent scaling keeps the browser resampling
+ * the image, which visibly softens it.
+ */
 const HeroPanel = ({
   src,
   alt = '',
@@ -26,9 +30,9 @@ const HeroPanel = ({
     <img
       src={src}
       alt={alt}
-      className="w-full h-full object-cover animate-ken-burns motion-reduce:animate-none"
-      style={{ animationDelay: `${BASE_DELAY_MS + delayMs + 1600}ms` }}
+      className="w-full h-full object-cover"
       fetchPriority={priority ? 'high' : 'auto'}
+      decoding={priority ? 'sync' : 'async'}
     />
   </div>
 );

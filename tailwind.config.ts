@@ -99,10 +99,6 @@ export default {
 					'0%': { opacity: '0', transform: 'scale(1.12)' },
 					'100%': { opacity: '1', transform: 'scale(1)' }
 				},
-				'ken-burns': {
-					'0%': { transform: 'scale(1)' },
-					'100%': { transform: 'scale(1.07)' }
-				},
 				'rise-in': {
 					'0%': { opacity: '0', transform: 'translateY(18px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' }
@@ -114,8 +110,7 @@ export default {
 				'fade-in': 'fade-in 0.6s ease-out',
 				'slide-up': 'slide-up 0.5s ease-out',
 				'scale-in': 'scale-in 0.3s ease-out',
-				'hero-in': 'hero-in 1.6s cubic-bezier(0.22, 1, 0.36, 1) both',
-				'ken-burns': 'ken-burns 18s ease-in-out infinite alternate',
+				'hero-in': 'hero-in 1.6s cubic-bezier(0.22, 1, 0.36, 1) backwards',
 				'rise-in': 'rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both'
 			},
 			fontFamily: {

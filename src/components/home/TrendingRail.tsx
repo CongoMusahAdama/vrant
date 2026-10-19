@@ -53,7 +53,8 @@ const TrendingRail = () => {
         const spare = Math.max(0, row.scrollWidth - row.parentElement!.clientWidth) * TRAVEL;
         // Row A drifts left, row B drifts right
         const x = i === 0 ? -current * spare : -spare + current * spare;
-        row.style.transform = `translate3d(${x}px, 0, 0)`;
+        // Whole pixels only: fractional offsets render the photos slightly blurred
+        row.style.transform = `translate3d(${Math.round(x)}px, 0, 0)`;
       });
       if (visible || Math.abs(target - current) > 0.001) frame = requestAnimationFrame(tick);
     };
