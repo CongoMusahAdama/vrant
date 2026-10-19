@@ -40,6 +40,3 @@ backend/uploads/*
 
 # Vercel local project link
 .vercel
-
-.vercel
-.env*
