@@ -18,7 +18,21 @@ export default {
 			}
 		},
 		extend: {
+			/*
+			 * Theme-aware ink: "black" text/borders flip to near-white in dark mode.
+			 * Backgrounds and gradients get their own mapping below so that
+			 * bg-white surfaces turn dark while black overlays/buttons stay black
+			 * and text-white on photos and wine buttons stays white.
+			 */
+			backgroundColor: {
+				white: 'rgb(var(--surface) / <alpha-value>)',
+				black: 'rgb(0 0 0 / <alpha-value>)',
+			},
+			gradientColorStops: {
+				black: 'rgb(0 0 0 / <alpha-value>)',
+			},
 			colors: {
+				black: 'rgb(var(--ink) / <alpha-value>)',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

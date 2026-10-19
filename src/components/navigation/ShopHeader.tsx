@@ -9,6 +9,7 @@ import { useCategories } from '@/contexts/CategoriesContext';
 import { buildShopNavLinks } from '@/lib/categories';
 import { STICKY_NAV_CLASS, NAV_LINK_BASE, navLinkClass } from '@/lib/page-layout';
 import SiteLogo from '@/components/brand/SiteLogo';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 
 interface ShopHeaderProps {
   cartCount?: number;
@@ -61,6 +62,7 @@ const ShopHeader = ({ cartCount = 0 }: ShopHeaderProps) => {
     >
       <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
       <div className="absolute top-4 right-4 sm:top-5 sm:right-5 md:top-8 md:right-12 lg:right-16 z-10 flex items-center gap-1 sm:gap-3 md:gap-4 min-h-[44px]">
+        <ThemeToggle className="p-1 text-black hover:opacity-60" />
         <AccountNavLink className="text-black" />
         <Link
           to="/cart"

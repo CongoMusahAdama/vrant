@@ -11,6 +11,7 @@ import { buildShopNavLinks } from '@/lib/categories';
 import { STICKY_NAV_CLASS, PAGE_X, NAV_LINK_BASE, navLinkClass } from '@/lib/page-layout';
 import { useCart } from '@/contexts/CartContext';
 import SiteLogo from '@/components/brand/SiteLogo';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 
 interface HeaderProps {
   variant?: 'solid' | 'transparent';
@@ -101,6 +102,8 @@ const Header = ({ variant = 'solid' }: HeaderProps) => {
         >
           <Search className="w-4 h-4" strokeWidth={2} />
         </button>
+
+        <ThemeToggle className={cn('p-1 hover:opacity-60', textClass)} />
 
         <AccountNavLink className={textClass} textClass={textClass} />
 

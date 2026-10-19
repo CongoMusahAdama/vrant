@@ -1,12 +1,14 @@
+import { useTheme } from 'next-themes';
 import { Toaster as Sonner } from 'sonner';
 import { ALERT_DURATION } from '@/lib/sweet-alert';
 
 type ToasterProps = React.ComponentProps<typeof Sonner>;
 
 const Toaster = ({ ...props }: ToasterProps) => {
+  const { resolvedTheme } = useTheme();
   return (
     <Sonner
-      theme="light"
+      theme={resolvedTheme === 'dark' ? 'dark' : 'light'}
       position="top-center"
       offset={16}
       gap={12}

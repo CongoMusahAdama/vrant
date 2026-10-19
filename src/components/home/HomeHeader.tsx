@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Menu, Search, ShoppingBag, User, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet';
 import SiteLogo from '@/components/brand/SiteLogo';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 import { useCart } from '@/contexts/CartContext';
 import { useAuth } from '@/contexts/AuthContext';
 import { useCategories } from '@/contexts/CategoriesContext';
@@ -90,6 +91,7 @@ const HomeHeader = () => {
           </Link>
 
           <div className="flex items-center gap-2">
+            <ThemeToggle className={cn(pillClass, 'px-2.5')} />
             <button
               type="button"
               className={cn(pillClass, 'px-2.5')}

@@ -26,7 +26,8 @@ const SiteLogo = ({ variant = 'light', size = 'nav', className }: SiteLogoProps)
       alt={logoAlt}
       className={cn(
         'w-auto object-contain [image-rendering:auto]',
-        variant === 'dark' && 'invert',
+        // Dark logo artwork: invert on the wine footer, and on dark-mode surfaces
+        variant === 'dark' ? 'invert' : 'dark:invert',
         className
       )}
       decoding="async"

@@ -1,5 +1,6 @@
 import { lazy, Suspense, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { ThemeProvider } from 'next-themes';
 import RouteScrollToTop from './components/ui/RouteScrollToTop';
 import CartNavBridge from './components/shop/CartNavBridge';
 import NewDropsModal from './components/shop/NewDropsModal';
@@ -99,10 +100,10 @@ const ProtectedRoute = ({
 
   if (requireAdmin && !isAdmin) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-background">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Access Denied</h2>
-          <p className="text-gray-600 mb-6">You don&apos;t have permission to access this page</p>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-foreground mb-4">Access Denied</h2>
+          <p className="text-gray-600 dark:text-muted-foreground mb-6">You don&apos;t have permission to access this page</p>
           <Navigate to="/" replace />
         </div>
       </div>
@@ -112,8 +113,30 @@ const ProtectedRoute = ({
   return <>{children}</>;
 };
 
+/**
+ * Adds/removes the `dark` class on <html>; follows the system until the visitor picks.
+ * The admin panel has no toggle and its tinted badges are light-only, so it stays light.
+ */
+const RoutedThemeProvider = ({ children }: { children: React.ReactNode }) => {
+  const { pathname } = useLocation();
+  const isAdminRoute = pathname === '/admin' || pathname.startsWith('/admin/');
+  return (
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      storageKey="vrant-theme"
+      disableTransitionOnChange
+      forcedTheme={isAdminRoute ? 'light' : undefined}
+    >
+      {children}
+    </ThemeProvider>
+  );
+};
+
 const AppContent = () => (
   <Router>
+    <RoutedThemeProvider>
     <RouteScrollToTop />
     <CartProvider>
       <SiteSettingsProvider>
@@ -240,6 +263,7 @@ const AppContent = () => (
       </CategoriesProvider>
       </SiteSettingsProvider>
     </CartProvider>
+    </RoutedThemeProvider>
   </Router>
 );
 
