@@ -1,16 +1,8 @@
-const envApiUrl = (import.meta.env.VITE_API_URL as string | undefined)?.trim().replace(/\/$/, '');
-
 /**
- * The API runs on the same Vercel domain as the site (/api), so requests are same-origin.
- * VITE_API_URL is only needed to point at an API somewhere else.
- * Development: empty → same origin, and Vite proxies /api to localhost:5000.
+ * The API is served by the same Vercel deployment as the site (/api), so requests are same-origin.
+ * In development Vite proxies /api to localhost:5000. Outside the browser, fall back to the local API.
  */
-export const API_BASE =
-  envApiUrl && envApiUrl.length > 0
-    ? envApiUrl
-    : typeof window !== 'undefined'
-      ? ''
-      : 'http://localhost:5000';
+export const API_BASE = typeof window !== 'undefined' ? '' : 'http://localhost:5000';
 
 export async function apiFetch<T>(
   path: string,
