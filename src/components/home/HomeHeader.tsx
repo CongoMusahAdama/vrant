@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Menu, Search, ShoppingBag, User, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet';
 import SiteLogo from '@/components/brand/SiteLogo';
-import ThemeToggle from '@/components/ui/ThemeToggle';
+import { useHideOnScroll } from '@/hooks/use-hide-on-scroll';
 import { useCart } from '@/contexts/CartContext';
 import { useAuth } from '@/contexts/AuthContext';
 import { useCategories } from '@/contexts/CategoriesContext';
@@ -30,6 +30,8 @@ const HomeHeader = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState('');
+  const scrollHidden = useHideOnScroll();
+  const hidden = scrollHidden && !searchOpen && !menuOpen;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -62,7 +64,12 @@ const HomeHeader = () => {
   ];
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50">
+    <header
+      className={cn(
+        'fixed top-0 inset-x-0 z-50 transition-transform duration-300',
+        hidden && '-translate-y-full'
+      )}
+    >
 
       <div
         className={cn(
@@ -91,7 +98,6 @@ const HomeHeader = () => {
           </Link>
 
           <div className="flex items-center gap-2">
-            <ThemeToggle className={cn(pillClass, 'px-2.5')} />
             <button
               type="button"
               className={cn(pillClass, 'px-2.5')}

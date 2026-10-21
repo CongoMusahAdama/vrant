@@ -1,6 +1,6 @@
 {
   "name": "vrant",
-  "description": "VRANT — Ghanaian fashion house online store: clothing, jeans, footwear and custom design orders. React + Vite frontend (Vercel), Express + MongoDB API (Render).",
+  "description": "VRANT — Ghanaian fashion house online store: clothing, jeans, footwear and custom design orders. React + Vite frontend and Express + MongoDB API, both on Vercel.",
   "private": true,
   "version": "0.0.0",
   "type": "module",

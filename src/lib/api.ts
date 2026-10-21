@@ -1,7 +1,8 @@
 const envApiUrl = (import.meta.env.VITE_API_URL as string | undefined)?.trim().replace(/\/$/, '');
 
 /**
- * Production (Vercel): VITE_API_URL must point at the Render API.
+ * The API runs on the same Vercel domain as the site (/api), so requests are same-origin.
+ * VITE_API_URL is only needed to point at an API somewhere else.
  * Development: empty → same origin, and Vite proxies /api to localhost:5000.
  */
 export const API_BASE =
@@ -10,12 +11,6 @@ export const API_BASE =
     : typeof window !== 'undefined'
       ? ''
       : 'http://localhost:5000';
-
-if (import.meta.env.PROD && !envApiUrl) {
-  console.error(
-    '[VRANT] VITE_API_URL is not set — API calls will fail. Add it in Vercel → Project → Settings → Environment Variables, then redeploy.'
-  );
-}
 
 export async function apiFetch<T>(
   path: string,

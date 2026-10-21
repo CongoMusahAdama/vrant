@@ -1,3 +1,6 @@
-# The API lives on Render — Vercel only builds the website
-backend
-render.yaml
+# The API (backend/) is deployed as the /api function — keep secrets and local files out
+backend/node_modules
+backend/.env
+backend/.env.*
+!backend/.env.example
+backend/uploads

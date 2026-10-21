@@ -1,10 +1,14 @@
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 const multer = require('multer');
 const { configureCloudinary } = require('../lib/cloudinaryClient');
 const { MAX_UPLOAD_BYTES, MAX_PRODUCT_IMAGES } = require('../lib/constants');
 
-const UPLOAD_DIR = path.join(__dirname, '..', 'uploads');
+// On Vercel only /tmp is writable; files there are just a stop on the way to Cloudinary
+const UPLOAD_DIR = process.env.VERCEL
+  ? path.join(os.tmpdir(), 'vrant-uploads')
+  : path.join(__dirname, '..', 'uploads');
 if (!fs.existsSync(UPLOAD_DIR)) {
   fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 }

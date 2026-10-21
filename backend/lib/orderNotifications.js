@@ -4,6 +4,7 @@ const { isMnotifyConfigured, sendTransactionalSms } = require('./mnotify');
 const { vrantEmailLayout } = require('./emailTemplate');
 const { formatPhoneForMnotify } = require('./phone');
 const { publicSiteUrl } = require('./publicSiteUrl');
+const { runInBackground } = require('./background');
 
 const STATUS_LABEL = {
   pending: 'Pending',
@@ -366,15 +367,15 @@ async function notifyCustomerOrderStatus(orderOrId, previousStatus) {
 
 /** Fire-and-forget wrappers for route handlers */
 function queueAdminNewOrder(order) {
-  setImmediate(() => notifyAdminNewOrder(order));
+  runInBackground(() => notifyAdminNewOrder(order));
 }
 
 function queueAdminPaymentReceived(order) {
-  setImmediate(() => notifyAdminPaymentReceived(order));
+  runInBackground(() => notifyAdminPaymentReceived(order));
 }
 
 function queueCustomerStatusChange(order, previousStatus) {
-  setImmediate(() => notifyCustomerOrderStatus(order, previousStatus));
+  runInBackground(() => notifyCustomerOrderStatus(order, previousStatus));
 }
 
 module.exports = {

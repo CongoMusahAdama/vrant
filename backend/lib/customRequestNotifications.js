@@ -3,6 +3,7 @@ const { isMnotifyConfigured, sendTransactionalSms } = require('./mnotify');
 const { formatPhoneForMnotify } = require('./phone');
 const { vrantEmailLayout } = require('./emailTemplate');
 const { publicSiteUrl } = require('./publicSiteUrl');
+const { runInBackground } = require('./background');
 
 const GARMENT_LABEL = {
   two_piece_set: 'Two-piece set',
@@ -76,7 +77,7 @@ async function notifyAdminCustomRequest(request) {
 }
 
 function queueAdminCustomRequest(request) {
-  setImmediate(() => notifyAdminCustomRequest(request));
+  runInBackground(() => notifyAdminCustomRequest(request));
 }
 
 module.exports = { queueAdminCustomRequest, GARMENT_LABEL };

@@ -11,7 +11,7 @@ import { buildShopNavLinks } from '@/lib/categories';
 import { STICKY_NAV_CLASS, PAGE_X, NAV_LINK_BASE, navLinkClass } from '@/lib/page-layout';
 import { useCart } from '@/contexts/CartContext';
 import SiteLogo from '@/components/brand/SiteLogo';
-import ThemeToggle from '@/components/ui/ThemeToggle';
+import { useHideOnScroll } from '@/hooks/use-hide-on-scroll';
 
 interface HeaderProps {
   variant?: 'solid' | 'transparent';
@@ -30,6 +30,7 @@ const Header = ({ variant = 'solid' }: HeaderProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   const shopRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+  const scrollHidden = useHideOnScroll();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -78,7 +79,9 @@ const Header = ({ variant = 'solid' }: HeaderProps) => {
       className={cn(
         STICKY_NAV_CLASS,
         solidBar ? 'bg-white' : 'bg-transparent',
-        isScrolled && solidBar && 'shadow-sm border-b border-black/10'
+        isScrolled && solidBar && 'shadow-sm border-b border-black/10',
+        // Slide away while scrolling down, unless a menu or search is open
+        scrollHidden && !isMobileMenuOpen && !isSearchOpen && !isShopOpen && '-translate-y-full'
       )}
     >
       <div className={cn('relative max-w-[1400px] mx-auto', PAGE_X)}>
@@ -102,8 +105,6 @@ const Header = ({ variant = 'solid' }: HeaderProps) => {
         >
           <Search className="w-4 h-4" strokeWidth={2} />
         </button>
-
-        <ThemeToggle className={cn('p-1 hover:opacity-60', textClass)} />
 
         <AccountNavLink className={textClass} textClass={textClass} />
 

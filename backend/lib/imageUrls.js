@@ -4,9 +4,6 @@ function publicApiBase() {
   if (process.env.API_PUBLIC_URL) {
     return process.env.API_PUBLIC_URL.replace(/\/$/, '');
   }
-  if (process.env.RENDER_EXTERNAL_URL) {
-    return process.env.RENDER_EXTERNAL_URL.replace(/\/$/, '');
-  }
   const port = process.env.PORT || 5000;
   return `http://localhost:${port}`;
 }

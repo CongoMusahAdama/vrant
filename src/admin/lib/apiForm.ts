@@ -1,4 +1,7 @@
 import { API_BASE } from '@/lib/api';
+import { MAX_UPLOAD_REQUEST_BYTES, formFilesBytes, shrinkFormImages } from '@/lib/shrinkImage';
+
+const TOO_LARGE_MESSAGE = 'Those images are too large to send together. Please upload fewer or smaller photos.';
 
 export async function apiFormFetch<T>(
   path: string,
@@ -6,11 +9,15 @@ export async function apiFormFetch<T>(
   options: { method?: string; token?: string | null } = {}
 ): Promise<T> {
   const { method = 'POST', token } = options;
+  const body = await shrinkFormImages(formData);
+  if (formFilesBytes(body) > MAX_UPLOAD_REQUEST_BYTES) throw new Error(TOO_LARGE_MESSAGE);
+
   const res = await fetch(`${API_BASE}${path}`, {
     method,
     headers: token ? { Authorization: `Bearer ${token}` } : {},
-    body: formData,
+    body,
   });
+  if (res.status === 413) throw new Error(TOO_LARGE_MESSAGE);
 
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {

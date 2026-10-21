@@ -31,7 +31,7 @@ async function verifyCloudinary() {
     console.error(
       '   Open https://console.cloudinary.com → Dashboard → copy the exact Cloud name (e.g. dxxxx).'
     );
-    console.error('   Update CLOUDINARY_CLOUD_NAME in backend/.env and on Render, then run again.\n');
+    console.error('   Update CLOUDINARY_CLOUD_NAME in backend/.env and in Vercel, then run again.\n');
     return false;
   }
 }

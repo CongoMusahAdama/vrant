@@ -33,7 +33,7 @@ async function resolveUploadedImageUrl(file, folder = 'products') {
     } catch (uploadError) {
       console.error('Cloudinary upload failed:', uploadError.message);
       unlinkQuiet(file.path);
-      throw new Error('Image upload failed — check Cloudinary settings on Render.');
+      throw new Error('Image upload failed — check Cloudinary settings in Vercel.');
     }
     unlinkQuiet(file.path);
     throw new Error('Image upload failed — Cloudinary returned no URL.');
@@ -42,7 +42,7 @@ async function resolveUploadedImageUrl(file, folder = 'products') {
   if (process.env.NODE_ENV === 'production') {
     unlinkQuiet(file.path);
     throw new Error(
-      'Image upload failed — set CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET on Render.'
+      'Image upload failed — set CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET in Vercel.'
     );
   }
 

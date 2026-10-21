@@ -3,6 +3,7 @@ const { formatPhoneForMnotify } = require('./phone');
 const { publicSiteUrl } = require('./publicSiteUrl');
 const { isBrevoConfigured, sendTransactionalEmail } = require('./brevo');
 const { vrantEmailLayout } = require('./emailTemplate');
+const { runInBackground } = require('./background');
 
 async function safeSend(label, fn) {
   try {
@@ -33,7 +34,7 @@ async function notifyWelcomeSms(user) {
 }
 
 function queueWelcomeSms(user) {
-  setImmediate(() => notifyWelcomeSms(user));
+  runInBackground(() => notifyWelcomeSms(user));
 }
 
 /**
