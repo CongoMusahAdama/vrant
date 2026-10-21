@@ -24,14 +24,6 @@ export function productImageUrl(path?: string | null) {
 
   if (path.startsWith('https://res.cloudinary.com/')) return path;
 
-  // Legacy Render /uploads URLs — rewrite to the current site origin
-  if (path.includes('.onrender.com/uploads/')) {
-    const legacyPath = extractUploadsPath(path);
-    if (legacyPath) {
-      return `${siteOrigin()}${legacyPath}`;
-    }
-  }
-
   // Full URLs from API (vrant.com, Cloudinary, etc.) — do not rewrite to API host
   if (path.startsWith('http://') || path.startsWith('https://')) {
     return path;
