@@ -15,10 +15,12 @@ import TablePagination from '@/components/ui/TablePagination';
 import { cn } from '@/lib/utils';
 import { matchesSearch, rankSearchResults } from '@/lib/product-search';
 import NoResultsDialog from '@/components/shop/NoResultsDialog';
+import { useSeo } from '@/lib/seo';
 
 const PRODUCTS_PAGE_SIZE = 12;
 
 const Products = () => {
+  useSeo({ title: 'Shop clothing, jeans & footwear', description: 'Shop the VRANT Innovations collection — two-piece sets, print shirts, kaftans, jeans and hand-finished suede slides, made in Takoradi, Ghana.' });
   const { products: shopProducts, loading: catalogLoading } = useShopCatalog();
   const { categories } = useCategories();
   const [selectedCategory, setSelectedCategory] = useState('all');

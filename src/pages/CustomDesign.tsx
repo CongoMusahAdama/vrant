@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useSeo } from '@/lib/seo';
 import { Link } from 'react-router-dom';
 import {
   ArrowDown,
@@ -100,6 +101,7 @@ const SectionHeading = ({ n, title, hint }: { n: number; title: string; hint?: s
 
 /** Customers send their own design for the VRANT team to make */
 const CustomDesign = () => {
+  useSeo({ title: 'Custom orders — bring your own design', description: 'Send VRANT Innovations your sketch or idea and our tailors in Takoradi will make it just for you. Two-piece sets, shirts, kaftans, jeans and footwear.' });
   const { user } = useAuth();
   const { storePhone } = useSiteSettings();
   const [form, setForm] = useState(emptyForm);

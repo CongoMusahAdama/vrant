@@ -46,7 +46,7 @@ function vrantEmailLayout({ title, bodyHtml, preheader = '' }) {
               <p style="margin:0 0 6px;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#111;">VRANT</p>
               <p style="margin:0;font-size:11px;color:#666;">Ghanaian heritage, modern form</p>
               <p style="margin:12px 0 0;font-size:11px;">
-                <a href="${url}" style="color:#111;text-decoration:underline;">vrant.com</a>
+                <a href="${url}" style="color:#111;text-decoration:underline;">vrantinnovations.com</a>
               </p>
             </td>
           </tr>

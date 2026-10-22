@@ -10,6 +10,7 @@ import { SOCIAL_LINKS } from '@/lib/social';
 import { SITE_HEADER_OFFSET_PT, HEADER_OFFSET_SCROLL_MT, PAGE_X } from '@/lib/page-layout';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import { cn } from '@/lib/utils';
+import { useSeo } from '@/lib/seo';
 
 const sectionClass = `mb-20 md:mb-24 ${HEADER_OFFSET_SCROLL_MT}`;
 const headingClass = 'text-[11px] md:text-xs font-bold tracking-[0.25em] uppercase mb-8';
@@ -28,6 +29,7 @@ const bullet = (text: string) => (
 );
 
 const Shipping = () => {
+  useSeo({ title: 'Shipping & returns' });
   const location = useLocation();
   const { storeEmail } = useSiteSettings();
 

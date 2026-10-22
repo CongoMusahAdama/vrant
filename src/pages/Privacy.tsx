@@ -6,8 +6,10 @@ import ScrollToTop from '@/components/ui/scroll-to-top';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import { useSiteSettings } from '@/contexts/SiteSettingsContext';
 import { SITE_HEADER_OFFSET_PT, PAGE_X } from '@/lib/page-layout';
+import { useSeo } from '@/lib/seo';
 
 const Privacy = () => {
+  useSeo({ title: 'Privacy policy' });
   const { storeEmail } = useSiteSettings();
   return (
     <div className="min-h-screen bg-white text-black">

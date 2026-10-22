@@ -15,7 +15,7 @@ function siteOrigin() {
   if (typeof window !== 'undefined') {
     return window.location.origin.replace(/\/$/, '');
   }
-  return import.meta.env.PROD ? 'https://vrant.com' : API_BASE.replace(/\/$/, '');
+  return import.meta.env.PROD ? 'https://vrantinnovations.com' : API_BASE.replace(/\/$/, '');
 }
 
 /** Resolve product/gallery image paths from API uploads, Cloudinary, or static assets */
@@ -24,7 +24,7 @@ export function productImageUrl(path?: string | null) {
 
   if (path.startsWith('https://res.cloudinary.com/')) return path;
 
-  // Full URLs from API (vrant.com, Cloudinary, etc.) — do not rewrite to API host
+  // Full URLs from API (vrantinnovations.com, Cloudinary, etc.) — do not rewrite to API host
   if (path.startsWith('http://') || path.startsWith('https://')) {
     return path;
   }

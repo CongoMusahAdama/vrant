@@ -1,4 +1,4 @@
-const DEFAULT_PUBLIC_SITE = 'https://vrant.com';
+const DEFAULT_PUBLIC_SITE = 'https://vrantinnovations.com';
 
 function isLocalUrl(url) {
   if (!url) return true;

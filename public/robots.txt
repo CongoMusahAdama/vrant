@@ -1,16 +1,12 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
+# VRANT Innovations — https://vrantinnovations.com
 User-agent: *
 Allow: /
+# Private / transactional pages
+Disallow: /admin
+Disallow: /account
+Disallow: /cart
+Disallow: /payment
+Disallow: /reset-password
+Disallow: /api/
 
-Sitemap: https://vrant.com/sitemap.xml
+Sitemap: https://vrantinnovations.com/sitemap.xml

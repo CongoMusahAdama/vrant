@@ -11,6 +11,7 @@ import { SITE_HEADER_OFFSET_PT, PAGE_X } from '@/lib/page-layout';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { VRANT_LOOKBOOK } from '@/data/vrant-collection';
+import { useSeo } from '@/lib/seo';
 
 interface GalleryItem {
   id: string;
@@ -21,6 +22,7 @@ interface GalleryItem {
 }
 
 const Gallery = () => {
+  useSeo({ title: 'Lookbook', description: 'The VRANT Innovations lookbook — diamond sets, kaftans, panel shirts and suede slides, styled in Takoradi.' });
   const [filter, setFilter] = useState('all');
   const [images, setImages] = useState<GalleryItem[]>([]);
   const [loading, setLoading] = useState(true);

@@ -5,8 +5,10 @@ import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import ScrollToTop from '@/components/ui/scroll-to-top';
 import { useCart } from '@/contexts/CartContext';
 import { SHOP_HEADER_OFFSET_PT, PAGE_X, MOBILE_BOTTOM_SAFE } from '@/lib/page-layout';
+import { useSeo } from '@/lib/seo';
 
 const Cart = () => {
+  useSeo({ title: 'Your cart', noindex: true });
   const { cartCount } = useCart();
 
   return (

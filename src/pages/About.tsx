@@ -6,8 +6,10 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 import { useSiteSettings } from '@/contexts/SiteSettingsContext';
 import { SITE_HEADER_OFFSET_PT, PAGE_X } from '@/lib/page-layout';
 import { cn } from '@/lib/utils';
+import { useSeo } from '@/lib/seo';
 
 const About = () => {
+  useSeo({ title: 'About us', description: 'VRANT Innovations is a fashion house from Takoradi, Ghana — clothing, denim and hand-finished footwear cut and finished by our own tailors.' });
   const { aboutEyebrow, aboutTitle, aboutParagraphs, loading } = useSiteSettings();
 
   return (

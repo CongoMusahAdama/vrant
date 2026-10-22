@@ -22,6 +22,7 @@ import { cn } from '@/lib/utils';
 import { PAGE_X, PRODUCT_DETAIL_OFFSET_PT } from '@/lib/page-layout';
 import { sweetError } from '@/lib/sweet-alert';
 import type { DeliveryDetails } from '@/types/customer';
+import { useSeo, SITE_URL } from '@/lib/seo';
 
 const emptyDelivery = (): DeliveryDetails => ({
   fullName: '',
@@ -68,6 +69,35 @@ const ProductDetail = () => {
     const fromUser = getDeliveryFromUser(user);
     if (fromUser) setDelivery(fromUser);
   }, [user]);
+
+  // Product title/description + Product structured data (price, stock, brand) for Google
+  useSeo(
+    product
+      ? {
+          title: product.name,
+          description: `${product.name} by VRANT Innovations — ${product.price}. ${product.description}`.slice(0, 300),
+          image: product.frontImage,
+          jsonLd: {
+            '@context': 'https://schema.org',
+            '@type': 'Product',
+            name: product.name,
+            description: product.description,
+            image: product.images.map((src) => (src.startsWith('http') ? src : `${SITE_URL}${src}`)),
+            brand: { '@type': 'Brand', name: 'VRANT Innovations' },
+            category: getCategoryLabel(product.category),
+            offers: {
+              '@type': 'Offer',
+              url: `${SITE_URL}/products/${product.id}`,
+              priceCurrency: 'GHS',
+              price: product.priceAmount,
+              availability:
+                product.stock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+              seller: { '@id': `${SITE_URL}/#organization` },
+            },
+          },
+        }
+      : {}
+  );
 
   if (catalogLoading) {
     return (

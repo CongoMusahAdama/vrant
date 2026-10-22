@@ -119,7 +119,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-6 border-t border-white/10 flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-4">
           <p className="text-[10px] font-bold tracking-[0.2em] text-white/50 uppercase">
-            © {year} VRANT. All rights reserved. Proudly Ghanaian.
+            © {year} VRANT Innovations. All rights reserved. Proudly Ghanaian.
           </p>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
             <div className="flex items-center text-[10px] tracking-[0.2em] text-white/30 uppercase">

@@ -18,6 +18,7 @@ const paystackWebhookHandler = paymentRoutes.paystackWebhookHandler;
 const galleryRoutes = require('./routes/gallery');
 const categoryRoutes = require('./routes/categories');
 const settingsRoutes = require('./routes/settings');
+const seoRoutes = require('./routes/seo');
 const customRequestRoutes = require('./routes/customRequests');
 const { connectDb } = require('./lib/db');
 
@@ -138,6 +139,7 @@ app.use('/api/payments', paymentRoutes);
 app.use('/api/gallery', galleryRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/settings', settingsRoutes);
+app.use(seoRoutes);
 app.use('/api/custom-requests', customRequestRoutes);
 
 // Health check endpoint

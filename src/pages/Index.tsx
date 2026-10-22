@@ -6,8 +6,10 @@ import CustomDesignBanner from '@/components/home/CustomDesignBanner';
 import Footer from '@/components/layout/Footer';
 import ScrollToTop from '@/components/ui/scroll-to-top';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import { useSeo } from '@/lib/seo';
 
 const Index = () => {
+  useSeo();
   return (
     <div className="min-h-screen bg-white overflow-x-hidden selection:bg-black selection:text-white">
       <HomeHeader />

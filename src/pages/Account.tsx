@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback, useRef, useMemo } from 'react';
 import { Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 import ShopHeader from '@/components/navigation/ShopHeader';
+import { useSeo } from '@/lib/seo';
 import Footer from '@/components/layout/Footer';
 import ScrollToTop from '@/components/ui/scroll-to-top';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
@@ -39,6 +40,7 @@ const SECTION_TITLE: Record<AccountSection, string> = {
 };
 
 const Account = () => {
+  useSeo({ title: 'My account', noindex: true });
   const navigate = useNavigate();
   const { user, token, logout, refreshUser, updateUser, isAdmin } = useAuth();
   const { cartCount } = useCart();
