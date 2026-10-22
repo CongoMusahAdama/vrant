@@ -38,5 +38,18 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.vrantinnovations.com"
+        }
+      ],
+      "destination": "https://vrantinnovations.com/$1",
+      "permanent": true
+    }
   ]
 }
